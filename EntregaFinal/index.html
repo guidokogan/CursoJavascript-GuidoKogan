@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mi tercer script</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet"> 
+    <link href="main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header"><p>Cotizador Online de seguro de autos</p></div>
+    <div class="form vehiculo">
+            <h1>Vehículo</h1>
+
+            <h3>Tipo de vehículo</h3>
+
+            <label class="container">Automotores
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+            </label>
+            <label class="container">Motovehículo
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+            </label>
+
+            <h3>Año</h3>
+
+            <input type="text" class="form__text" name="año" placeholder="Ej. 2001">
+        
+            <h3>Modelo o código</h3>
+
+            <select id="options" name="modelo">
+                <option value="motoniveladwabco777-9190901"><p>Motonivelad.Wabco777 (9190901)</p></option>
+                <option value="motoniveladwabco777-9190901"><p>Motonivelad.Wabco777 (9190901)</p></option>
+                <option value="motoniveladwabco777-9190901"><p>Motonivelad.Wabco777 (9190901)</p></option>
+            </select>
+
+            <h3>Valor ($)</h3>
+
+            <input type="text" class="form__text" name="valor" placeholder="Ej. 100.000">
+        
+            <h3>Clase</h3>
+
+            <select id="options" name="clase">
+                <option value="trabajosrurales"><p>Trabajos Rurales</p></option>
+                <option value="trabajosrurales"><p>Trabajos Rurales</p></option>
+                <option value="trabajosrurales"><p>Trabajos Rurales</p></option>
+            </select>
+        
+            <h3>Tipo de uso</h3>
+
+            <select id="options" name="tipodeuso">
+                <option value="trabajosrurales"><p>Trabajos Rurales</p></option>
+                <option value="trabajosrurales"><p>Trabajos Rurales</p></option>
+                <option value="trabajosrurales"><p>Trabajos Rurales</p></option>
+            </select>
+    </div>
+    <div class="form">
+            <h1>Titular</h1>
+        
+            <h3>Situación Impositiva</h3>
+
+            <select id="options" name="modelo">
+                <option value="responsable-inscripto"><p>Responsable Inscripto</p></option>
+                <option value="responsable-inscripto"><p>Responsable Inscripto</p></option>
+                <option value="responsable-inscripto"><p>Responsable Inscripto</p></option>
+            </select>
+
+            <h3>Persona Jurídica</h3>
+
+            <label class="container">Si
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+            </label>
+            <label class="container">No
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+            </label>
+
+            <h3>Localidad</h3>
+
+            <input type="text" class="form__text" name="localidad" placeholder="Ej. Rafaela">
+    </div>
+    <div class="form">
+            <h1>Cobertura</h1>
+        
+            <h3>Producto</h3>
+
+            <select id="options" name="producto">
+                <option value="operatoria-normal"><p>Operatoria Normal</p></option>
+                <option value="operatoria-normal"><p>Operatoria Normal</p></option>
+                <option value="operatoria-normal"><p>Operatoria Normal</p></option>
+            </select>
+
+            <h3>Vigencia</h3>
+
+            <label class="container">Anual
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+            </label>
+            <label class="container">Semestre
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+            </label>
+            <div class="vigencia__fechas">
+                <input type="text" class="form__text mitad" name="desde" placeholder="Ej. 06/08/2020">
+                <input type="text" class="form__text mitad" name="hasta" placeholder="Ej. 06/08/2020">
+            </div>
+            <h3>Forma de Pago</h3>
+
+            <select id="options" name="formadepago">
+                <option value="efectivo"><p>Efectivo</p></option>
+                <option value="efectivo"><p>Efectivo</p></option>
+                <option value="efectivo"><p>Efectivo</p></option>
+            </select>
+    </div>
+    <div class="resultado">
+        <h1>Cotizaciones</h1>
+        <h3>Motonivelad.WABCO777 - 2001</h3>
+        <p>Capital Asegurable: $100.000 </p>
+        <table class="resultados__tabla">
+            <tr>
+                <th class="columna1">Responsabilidad Civil Hasta $ 22.000.000</th>
+                <th class="columna2">✓</th>
+            </tr>
+            <tr>
+                <th class="columna1">Incendio Parcial</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Incendio Total</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Robo y/o Hurto Parcial</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Robo y/o Hurto Total</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Accidente Total</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Accidente Parcial según Deducible</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Lock Out o Tumulto Popular</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Granizo/Terremoto/Inundac Parc y/o Tot S/Ded</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Destrucción Total al 80% </th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Asistencia Jurídica</th>
+                <th class="columna2">✘</th>
+            </tr>
+            <tr>
+                <th class="columna1">Equipo de rastreo</th>
+                <th class="columna2">✘</th>
+            </tr>
+        </table>
+        <div class="resultado__precio">
+            <h1>$360</h1>
+            <h3>por mes</h3>
+        </div>
+    </div>
+    <script src='main.js'></script>
+</body>
+</html>
