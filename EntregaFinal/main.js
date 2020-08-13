@@ -1,13 +1,15 @@
 var anio = prompt("Año del vehículo");
-var marca = prompt('Ingrese la marca');
+var marcasAgregada = prompt('Ingrese la marca');
+var marcasBaseDeDatos = ["Volkswagen", "Renault", "Ford", "Peugeot", "Chevrolet", "Fiat", "Citroen", "Toyota", "Honda"];
+var marca = marcasBaseDeDatos.concat(marcasAgregada);
 var modelo = prompt('Ingrese el modelo');
 var valor = prompt("Valor del vehículo");
-var clase = "Trabajos Rurales";
-var tipodeuso = "Trabajos Rurales";
+var clase = "Trabajos Rurales"; 
+var tipodeuso = "Trabajos Rurales"; 
 var situacionimpositiva = "Responsable Inscripto";
 var localidad = prompt("Ingrese localidad, Ej: Rafaela");
 var producto = "Operatoria Normal";
-var formadepago = "Efectivo";
+var formadepago =  ["Efectivo"];
 
 function valorSeguro (anio, marca, modelo, valor, clase, tipodeuso, situacionimpositiva, localidad, producto, formadepago) {
     this.anio = anio;
@@ -20,6 +22,7 @@ function valorSeguro (anio, marca, modelo, valor, clase, tipodeuso, situacionimp
     this.localidad = localidad;
     this.producto = producto;
     this.formadepago = formadepago;
+    
     this.getValorSeguro = function () {
         console.log(
             'Sus datos son los siguientes: Año del vehículo: ' + this.anio + '\n' +
@@ -37,3 +40,4 @@ function valorSeguro (anio, marca, modelo, valor, clase, tipodeuso, situacionimp
 }
 
 var info = new valorSeguro (anio, marca, modelo, valor, "Trabajos Rurales", "Trabajos Rurales", situacionimpositiva, localidad, producto, "Efectivo");
+formadepago.push('Tarjeta de Crédito', 'Tarjeta de Débito');
