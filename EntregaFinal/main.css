@@ -1,30 +1,69 @@
-h1{
-    font-size: 41px;
-    line-height: 49px;
-    font-family: 'Tiempos Fine Semibold';
-    font-weight: normal;
-    font-style: normal;
-    letter-spacing: 0px;
-    color: #3A3427;
-}
-h3{
-    font-size: 21px;
-    line-height: 25px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0px;
-    color: #3A3427;
-}
-p, label{
-    font-size: 19px;
-    line-height: 27px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0px;
-    color: #A5A5A5;
-}
 body{
-    background-image: url(back.jpg);background-attachment: fixed;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(247,250,255,1) 100%); 
+}
+html {
+    scroll-behavior: smooth;
+  }
+.clouds{
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    mix-blend-mode: multiply;
+    width: 80%;
+    animation-duration: 15s;
+    animation-name: float-x;
+    animation-delay: 0.8s;
+    animation-iteration-count: infinite;
+}
+.coin{
+    position: absolute;
+    bottom: 190px;
+    left: 207px;
+    mix-blend-mode: multiply;
+    width: 50px;
+    animation-duration: 5s;
+    animation-name: float;
+    animation-delay: 0.8s;
+    animation-iteration-count: infinite;
+}
+.heart{
+    position: absolute;
+    bottom: 100px;
+    right: 170px;
+    mix-blend-mode: multiply;
+    width: 44px;
+    animation-duration: 6s;
+    animation-name: float;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+}
+@keyframes float-x {
+    0% {
+        transform: translateX(-51%);
+    }
+    50% {
+        transform: translateX(-49%);
+    }
+    100% {
+        transform: translateX(-51%);
+    } 
+} 
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(2vh);
+    }
+    100% {
+        transform: translateY(0);
+    } 
+} 
+.hero{
+    width: 100%;
+    height: 100vh;
 }
 .header{
     position: fixed;
@@ -32,202 +71,191 @@ body{
     left: 0;
     width: 100%;
     z-index: 10;
-    background: #FCF7F4 0% 0% no-repeat padding-box;
-    border-bottom: 1px solid #3A3427;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-.header p{
+
+.headerLogo{
     padding: 20px 15px;
     margin: 0;
     margin-left: 50px;
     text-align: left;
-    font-size: 28px;
+    font-size: 25px;
     line-height: 30px;
-    font-family: 'Tiempos Fine Semibold';
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
     letter-spacing: 0px;
-    color: #3A3427;
+    color: #121C42;
+    text-decoration: none;
 }
-.titulo{
-    margin: auto;
-    width: 80%;
-    margin-top: 180px;
-}
-.titulo p{
+
+.headerComencemos{
+    padding: 20px 15px;
     margin: 0;
+    margin-right: 50px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #121C42;
+}
+
+.tituloBienvenida{
+    margin: auto;
+    width: 90%;
+    padding-top: 180px;
     text-align: center;
-    font-size: 65px;
-    line-height: 75px;
-    font-family: 'Tiempos Fine Semibold';
-    font-weight: normal;
-    font-style: normal;
-    letter-spacing: 1px;
-    color: #3A3427;
+    font-size: 90px;
+    line-height: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: -2px;
+    color: #121C42;
+}
+.subtituloBienvenida{
+    margin: auto;
+    width: 90%;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 17px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #9BA2B2;
+}
+.botonBienvenida{
+    width: 180px;
+    margin: auto;
+    margin-top: 90px;
+    text-align: center;
+}
+
+.botonBienvenida a{
+    border-radius: 13px;
+    background-color: #FFBB36;
+    text-align: center;
+    font-size: 15px;
+    padding: 15px 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,0);
+    transition: 0.2s;
+}
+
+.botonBienvenida a:hover{
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.1)
+}
+
+.formContainer{
+    width: 80%;
+    height: 100vh;
+    padding-top: 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.formimg{
+    width: 45%;
+    margin: auto;
+}
+.formimg img{
+    width: 120%;
+    animation-duration: 5s;
+    animation-name: float;
+    animation-delay: 0.8s;
+    animation-iteration-count: infinite;
 }
 .form{
+    width: 45%;
     margin: auto;
-    width: 675px;
+}
+.resultado{
     height: auto;
-    border-radius: 20px;
-    box-shadow: 0px 30px 46px #3A342738;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border-radius: 20px;
-    opacity: 1;
-    padding: 40px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
-.vehiculo{
-    margin-top: 80px;
-}
-.container {
-    display: inline-block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin-right: 20px;
-  }
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
-  }
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  .container input:checked ~ .checkmark {
-    background-color: #3A3427;
-  }
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  .container input:checked ~ .checkmark:after {
-    display: inline-block;
-  }
-  .container .checkmark:after {
-       top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: white;
-  }
 
-.vigencia__fechas{
-    display: block;
+h1{
+    font-size: 27px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0px;
+    color: #121C42;
 }
+h3{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0px;
+    color: #121C42;
+}
+p, label{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #121C42;
+}   
 .form__text{
-    font-size: 19px;
-    line-height: 27px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     letter-spacing: 0px;
     color: #A5A5A5;
     width: 97%;
-    height: 50px;
+    height: 40px;
     background: #F5F6F7 0% 0% no-repeat padding-box;
     border-radius: 7px;
     opacity: 1;
     border: none;
     padding-left: 20px;
-}
-.mitad{
-    margin-top: 10px;
-    display: inline-block;
-    width: 30%;
-    margin-right: 5%;
 }
  #options{
     width: 100%;
-    height: 50px;
+    height: 40px;
     background: #F5F6F7 0% 0% no-repeat padding-box;
     border-radius: 7px;
     opacity: 1;
     border: none;
     padding-left: 20px;
-    font-size: 19px;
-    line-height: 27px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     letter-spacing: 0px;
     color: #A5A5A5;
  }
  option{
-    font-size: 19px;
-    line-height: 27px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     letter-spacing: 0px;
     color: #A5A5A5;
  }
 
- .resultado{
-    margin: auto;
-    width: 754px;
-    height: auto;
-    border-radius: 20px;
-    border-radius: 20px;
-    opacity: 1;
-    margin-top: 50px;
+.resultado{
+    margin: 10px auto;
 }
-
-.resultados__tabla{
-    width: 754px;
-}
-.columna1{
-    text-align: left;
-    font-size: 19px;
-    line-height: 27px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0px;
-    color: #3A3427;
-
-}
-.columna2{
-    font-size: 19px;
-    line-height: 27px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0px;
-    color: #3A3427;
-}
-.resultado__precio{
-    margin: 80px auto;
-}
-.resultado__precio h1{
+.resultado h1{
     font-size: 80px;
-    line-height: 85px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 900;
+    font-weight: 500;
     letter-spacing: 0px;
-    color: #3A3427;
+    color: #121C42;
     margin: 0;
     padding: 0;
 }
-.resultado__precio h3{
-    font-size: 21px;
-    line-height: 25px;
+.resultado h3{
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 900;
+    font-weight: 400;
     letter-spacing: 0px;
-    color: #3A3427;
+    color: #A5A5A5;
     margin: 0;
     padding: 0;
-}
+} 
