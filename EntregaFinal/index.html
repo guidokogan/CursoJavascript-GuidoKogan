@@ -11,84 +11,105 @@
 </head>
 <body>
     <div class="hero" id="hero">
-        <img class="clouds" src="clouds.png"/>
-        <img class="coin" src="coin.png"/>
-        <img class="heart" src="heart.png"/>
-        <div class="header">
-            <a href="#hero" class="headerLogo">Secura</p>
-            <a href="#form" class="headerComencemos">Comencemos</a>
+        <img class="clouds" src="clouds.png" />
+        <img class="coin" src="coin.png" />
+        <img class="heart" src="heart.png" />
+  
+        <div id="header" class="header">
+          <a href="#hero" class="headerLogo">Secura</a>
+          <a href="#form" class="headerComencemos">Comencemos</a>
         </div>
-
-        <p class="tituloBienvenida">Cotizar tu seguro<br>ahora es más rápido</p>
+  
+        <p class="tituloBienvenida">
+          Cotizar tu seguro<br />
+          ahora es más rápido
+        </p>
         <p class="subtituloBienvenida">Un simulador simple para tener rápidamente una idea del costo de un seguro base.</p>
         <div class="botonBienvenida">
-            <a href="#form">Comencemos</a>
+          <a href="#form">Comencemos</a>
         </div>
-    </div>
-    
-    <div class="formContainer" id="form">
-        <div class="formimg">
-            <img class="formimg" src="formimg.png"/>
+      </div>
+  
+      <div class="formContainer" id="form">
+        <div class="formImg">
+          <img class="formImg" src="formimg.png" />
         </div>
-        <div class="form">
-            <h1>Coticemos tu auto</h1>
-            
-            <h3>Año</h3>
-            <input type="text" class="form__text" name="año" placeholder="Ej. 2001">
-            
-            <h3>Marca</h3>
-            <select id="options" name="marca" placeholder="Ej. Ford">
-                <option value="volkswagen">
-                    <p>Volkswagen</p>
-                </option>
-                <option value="renault">
-                    <p>Renault</p>
-                </option>
-                <option value="ford">
-                    <p>Ford</p>
-                </option>
-            </select>
-            
-            <h3>Modelo</h3>
-            <select id="options" name="modelo" placeholder="Ej. Ka">
-                <option value="sedan">
-                    <p>Sedan</p>
-                </option>
-                <option value="suv">
-                    <p>Suv</p>
-                </option>
-                <option value="golf">
-                    <p>Golf</p>
-                </option>
-                <option value="onix">
-                    <p>Onix</p>
-                </option>
-                <option value="cruze">
-                    <p>Cruze</p>
-                </option>
-                <option value="joy">
-                    <p>Joy</p>
-                </option>
-                <option value="ka">
-                    <p>Ka</p>
-                </option>
-                <option value="mondeo">
-                    <p>Mondeo</p>
-                </option>
-                <option value="mustang">
-                    <p>Mustang</p>
-                </option>
-            </select>
+        <div class="formInfo">
+          <h1>Coticemos tu auto</h1>
+  
+          <h3>Año</h3>
+          <input id="formInfo__options__year" type="number" class="formInfo__input" name="año" value="2001" />
+  
+          <h3>Marca</h3>
+          <select id="formInfo__options__marca" name="marca" placeholder="Ej. Ford">
+            <option value="volkswagen">
+              <p>Volkswagen</p>
+            </option>
+            <option value="renault">
+              <p>Renault</p>
+            </option>
+            <option value="ford">
+              <p>Ford</p>
+            </option>
+          </select>
+  
+          <h3>Modelo</h3>
+          <select id="formInfo__options__model" name="modelo" placeholder="Ej. Ka">
+            <option value="golf" id="golf">
+              <p>Golf</p>
+            </option>
+            <option value="sedan" id="sedan">
+              <p>Sedan</p>
+            </option>
+            <option value="suv" id="suv">
+              <p>Suv</p>
+            </option>
+            <option value="onix" id="onix">
+              <p>Onix</p>
+            </option>
+            <option value="cruze" id="cruze">
+              <p>Cruze</p>
+            </option>
+            <option value="joy" id="joy">
+              <p>Joy</p>
+            </option>
+            <option value="ka" id="ka">
+              <p>Ka</p>
+            </option>
+            <option value="mondeo" id="mondeo">
+              <p>Mondeo</p>
+            </option>
+            <option value="mustang" id="mustang">
+              <p>Mustang</p>
+            </option>
+          </select>
+  
+          <h3>Valor ($)</h3>
+          <input type="text" id="formInfo__valor" class="formInfo__input" name="valor" placeholder="Ej. 100.000" />
+          
+          <button onclick="getPrice()">Cotizá!</button><br>
+  
+          <div class="formInfo__resultado">
+            <h1 id="getPrice">$0</h1>
+            <h3>por mes</h3>
+          </div>
+        </div>
+      </div>
 
-            <h3>Valor ($)</h3>
-            <input type="text" class="form__text" name="valor" placeholder="Ej. 100.000">
-            
-            <div class="resultado">
-                <h1>$360</h1>
-                <h3>por mes</h3>
-            </div>
-        </div>
-    </div>
-    <script src='main.js'></script>
+      
+      <script src="main.js"></script>
+      <script>
+        var lastScrollTop = 0;
+        header = document.getElementById("header");
+        window.addEventListener("scroll", function () {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          if (scrollTop > lastScrollTop) {
+            header.style.top = "-80px";
+          } else {
+            header.style.top = "0";
+          }
+          lastScrollTop = scrollTop;
+        });
+      </script>
 </body>
 </html>
