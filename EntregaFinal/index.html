@@ -38,10 +38,11 @@
           <h1>Coticemos tu auto</h1>
   
           <h3>Año</h3>
-          <input id="formInfo__options__year" type="number" class="formInfo__input" name="año" value="2001" />
+          <input id="formInfo__options__year" type="number" class="formInfo__input" name="año" placeholder="Ej. 2001" />
   
           <h3>Marca</h3>
-          <select id="formInfo__options__marca" name="marca" placeholder="Ej. Ford">
+          <select id="formInfo__options__marca" name="marca" placeholder="Ej. Ford" onchange="populate(this.id,'formInfo__options__model')">
+            <option value=""></option>
             <option value="volkswagen">
               <p>Volkswagen</p>
             </option>
@@ -52,42 +53,14 @@
               <p>Ford</p>
             </option>
           </select>
-  
           <h3>Modelo</h3>
-          <select id="formInfo__options__model" name="modelo" placeholder="Ej. Ka">
-            <option value="golf" id="golf">
-              <p>Golf</p>
-            </option>
-            <option value="sedan" id="sedan">
-              <p>Sedan</p>
-            </option>
-            <option value="suv" id="suv">
-              <p>Suv</p>
-            </option>
-            <option value="onix" id="onix">
-              <p>Onix</p>
-            </option>
-            <option value="cruze" id="cruze">
-              <p>Cruze</p>
-            </option>
-            <option value="joy" id="joy">
-              <p>Joy</p>
-            </option>
-            <option value="ka" id="ka">
-              <p>Ka</p>
-            </option>
-            <option value="mondeo" id="mondeo">
-              <p>Mondeo</p>
-            </option>
-            <option value="mustang" id="mustang">
-              <p>Mustang</p>
-            </option>
+          <select id="formInfo__options__model" name="modelo" placeholder="Ej. Ka" onchange="getPrice()">
           </select>
   
           <h3>Valor ($)</h3>
-          <input type="text" id="formInfo__valor" class="formInfo__input" name="valor" placeholder="Ej. 100.000" />
+          <input onchange="getPrice()" type="number" id="formInfo__valor" class="formInfo__input" name="valor" placeholder="Ej. 100.000" />
           
-          <button onclick="getPrice()">Cotizá!</button><br>
+          <button onmousedown="mouseDown()" onmouseup="mouseUp()" type="button" id="saveCotizacion" onclick="saveCotizacion()">Guardá!</button><br>
   
           <div class="formInfo__resultado">
             <h1 id="getPrice">$0</h1>
