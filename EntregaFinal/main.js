@@ -1,9 +1,3 @@
-// Fijarse si se puede hacer todo el codigo más corto
-// La función function populate(s1, s2) la saque de internet y no se porqué cuando cambio el "s1" y el "s2", no toma nada.
-// No se si entendí que significa esto, osea, sí, pero porqué split y porque optionArray "var pair = optionArray[option].split("|");"
-// También estaría bueno que pueda agarrar el contenido del objeto definido de los nombres de las marcas de autos en vez de volver a escribirlas.
-
-
 formInfo__options__year.addEventListener("focus", function () {
   this.placeholder = "";
 });
