@@ -110,15 +110,16 @@ function getPrice(carSelected, modelSelected, yearSelected, valueSelected) {
 
 
 function mouseDown() {
-  document.getElementById("saveCotizacion").style.backgroundColor="green";
+  document.getElementById("saveCotizacion").style.backgroundColor="black";
 }
 function mouseUp() {
-  document.getElementById("saveCotizacion").style.backgroundColor = "red";
+  document.getElementById("saveCotizacion").style.backgroundColor = "black";
 }
 
 var datosJSON = {"yearSelected": null, "valueSelected": null, "carSelected": "", "modelSelected": ""}
 
 function saveCotizacion() {
+  event.preventDefault();
   datosJSON.yearSelected = formInfo__options__year.value;
   datosJSON.valueSelected = formInfo__valor.value;
   datosJSON.carSelected = car.options[car.selectedIndex].value;
