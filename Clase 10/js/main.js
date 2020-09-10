@@ -92,6 +92,7 @@ function cotizarSeguro(e) {
 	
 }
 
+
 function mostrarResultado(poliza, seguro) {
 	let {marca, modelo, anio, tipo, precio} = seguro;
 
