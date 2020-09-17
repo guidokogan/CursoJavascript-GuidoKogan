@@ -25,7 +25,16 @@ class Seguro {
 }
 $(function () {
 
-	
+    $(".botonBienvenida").mouseenter(() => {
+        var button = $(".botonBienvenida a");
+        button.animate({padding: '15px 120px', borderRadius:'0px'}, {duration: 200, easing: "swing"});
+    });
+
+    $(".botonBienvenida").mouseleave(() => {
+        var button = $(".botonBienvenida a");
+        button.animate({padding: '15px 30px', borderRadius: '13px'}, {duration: 200, easing: "swing"});
+    });
+
 	$(".changeButton").one( "click", function() {
         var $this = $(".changeButton");
         $this.toggleClass("changeButton");
@@ -79,7 +88,7 @@ function cotizarSeguro(e) {
 
     const resultados = $("#resultado .formInfo__resultado");
     if (resultados != null) {
-        resultados.remove();
+        resultados.show().remove();
     }
 
     const filtroPrecio = autos.find((elem) => elem.marcas.toLowerCase().replace(" ", "-") == marca && elem.modelo.toLowerCase().replace(" ", "-") == modelo);
