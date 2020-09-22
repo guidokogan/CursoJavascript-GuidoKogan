@@ -24,16 +24,79 @@ class Seguro {
     }
 }
 $(function () {
+    $(".botonVerAutos__texto").hide();
+    $(".botonVerAutos__link").mouseenter(() => {
+        $(".botonVerAutos__texto").fadeTo(100, 1);
+    });
+    $(".botonVerAutos__link").mouseleave(() => {
+        $(".botonVerAutos__texto").hide();
+    });
+    $(".botonVerAutos__link").one( "click", function() {
+        
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#tablaAutos").offset().top
+        }, 400);
+        $.ajax({
+            url: 'js/db.json',
+            dataType: 'json',
+            success: function (data, status, jqXHR) {
+                data.forEach(element => {
+                    $('#tablaAutos').append(
+                        `<div class="tablaAutos__container">
+                            <h2>${element.modelo}</h1>
+                            <h3>Marca: ${element.marcas}</br>Año:  ${element.anio}</br>Precio:  ${element.precio} <br>
+                        </div>`)
+                })        
+            },
+            error: function (jqXHR, status, error){
+                console.log('Status: ${status} - Error: ${error}')
+            }
+        });
+	});
+    var horz = document.querySelector("#tablaAutos");
+    isHover = false;
+
+    function preventDefault (event) {
+        event = event || window.event;
+        if (event.preventDefault) {
+            event.preventDefault();
+        }
+        event.returnValue = false;
+    }
+
+    horz.onmouseover=function(){
+    isHover=true;
+    };
+    horz.onmouseout=function(){
+    isHover=false;
+    };
+    function displaywheel(e){
+        var evt=window.event || e
+        var delta=evt.detail? evt.detail*(-120) : evt.wheelDelta;
+        if(delta<0 && isHover) { 
+        horz.scrollLeft += 100;
+        } else if(isHover) {
+        horz.scrollLeft -= 100;
+        }
+    }
+    
+    var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"
+    
+    if (document.attachEvent) {
+        document.attachEvent("on"+mousewheelevt, displaywheel)
+    } else if (document.addEventListener){
+        document.addEventListener(mousewheelevt, displaywheel, false)
+    }
 
     $(".botonBienvenida").mouseenter(() => {
         var button = $(".botonBienvenida a");
         button.animate({padding: '15px 120px', borderRadius:'0px'}, {duration: 200, easing: "swing"});
     });
-
     $(".botonBienvenida").mouseleave(() => {
         var button = $(".botonBienvenida a");
         button.animate({padding: '15px 30px', borderRadius: '13px'}, {duration: 200, easing: "swing"});
     });
+    
 
 	$(".changeButton").one( "click", function() {
         var $this = $(".changeButton");
@@ -184,4 +247,20 @@ function listaSelect(array, key) {
         }
     });
     return listado.sort();
+}
+
+
+function returnListadoAutos(){
+    $.ajax({
+        url: 'js/db.json',
+        dataType: 'json',
+        success: function (data, status, jqXHR) {
+            data.forEach(element => {
+                $('#tablaAutos').append(`<h3>Marca: ${element.marcas} - Modelo: ${element.modelo} - Año:  ${element.anio} - Precio:  ${element.precio} <br>`)
+            })        
+        },
+        error: function (jqXHR, status, error){
+            console.log('Status: ${status} - Error: ${error}')
+        }
+    });
 }
