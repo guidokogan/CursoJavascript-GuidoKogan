@@ -1,3 +1,20 @@
+
+var autos;
+
+function myCallback(response) {
+    autos = response;
+  }
+
+$.ajax({
+    url: 'js/db.json',
+    dataType: 'json',
+    async: false,
+    success: myCallback,
+    error: function (jqXHR, status, error){
+        console.log('Status: ${status} - Error: ${error}')
+    }
+});;
+
 class Seguro {
     constructor(marca, modelo, anio, tipo, precio) {
         this.marca = marca;
@@ -24,6 +41,8 @@ class Seguro {
     }
 }
 $(function () {
+
+
     $(".botonVerAutos__texto").hide();
     $(".botonVerAutos__link").mouseenter(() => {
         $(".botonVerAutos__texto").fadeTo(100, 1);
@@ -137,7 +156,7 @@ $(function () {
 
 function cotizarSeguro(e) {
     e.preventDefault();
-
+    
     const marca = $("#marca").val();
     const modelo = $("#modelo").val();
     const anio = $("#anio").val();
@@ -247,20 +266,4 @@ function listaSelect(array, key) {
         }
     });
     return listado.sort();
-}
-
-
-function returnListadoAutos(){
-    $.ajax({
-        url: 'js/db.json',
-        dataType: 'json',
-        success: function (data, status, jqXHR) {
-            data.forEach(element => {
-                $('#tablaAutos').append(`<h3>Marca: ${element.marcas} - Modelo: ${element.modelo} - Año:  ${element.anio} - Precio:  ${element.precio} <br>`)
-            })        
-        },
-        error: function (jqXHR, status, error){
-            console.log('Status: ${status} - Error: ${error}')
-        }
-    });
 }
