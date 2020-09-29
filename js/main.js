@@ -47,7 +47,7 @@ var cotizacionesRealizadas = localStorage.datosJSON;
 $(function () {
 
     
-    $("#tablaAutos").hide()
+    $("#tablaAutos__container").hide()
 
     $(".botonVerAutos__texto").hide();
     $(".botonVerAutos__link").mouseenter(() => {
@@ -168,7 +168,7 @@ function cotizarSeguro(e) {
     $(".botonVerAutos").fadeIn();
 
     $(".botonVerAutos__link").click(() => {
-        $("#tablaAutos").fadeTo(100, 1);
+        $("#tablaAutos__container").fadeTo(100, 1);
         const marcaCotizada = localStorage.getItem("Marca");
         const modeloCotizada = localStorage.getItem("Modelo");
         const anioCotizada = localStorage.getItem("Año");
@@ -187,11 +187,21 @@ function cotizarSeguro(e) {
             </div>`)
 
         $([document.documentElement, document.body]).animate({
-            scrollTop: $("#tablaAutos").offset().top
-        }, 400);
+            scrollTop: $("#tablaAutos__container").offset().top
+        }, 600);
+
+        setTimeout(() => {
+            $('#tablaAutos__container').fadeOut();
+            localStorage.clear("Marca");
+            localStorage.clear("Modelo");
+            localStorage.clear("Año");
+            localStorage.clear("Tipo");
+            localStorage.clear("Precio");
+            localStorage.clear("Poliza Total");
+        }, 4000);
+        
 	});
 }
-
 
 function mostrarResultado(poliza, seguro) {
     let { marca, modelo, anio, tipo, precio } = seguro;

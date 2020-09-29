@@ -495,18 +495,26 @@ h3 {
   padding: 0;
   text-transform: capitalize;
 }
-
+#tablaAutos__container{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  min-height: 190px;
+  z-index: 0;
+  width: 100%;
+  padding: 40px 10%;
+  background-color: #fff;
+  z-index: 48;
+  box-shadow: -20px -10px 23px -5px rgba(46,0,184,0.3);
+}
 #tablaAutos{
   z-index: 0;
-  width: 80%;
-  margin-top: 120px;
-  padding: 120px 0;
+  width: 95%;
   margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   overflow:hidden;
-  margin-top: 120px;
 }
 .tablaAutos__container{
   min-width: 260px;
@@ -520,9 +528,9 @@ h3 {
   color: #121c42;
   margin: 0;
   padding: 0;
-  text-transform: uppercase; 
+  text-transform: lowercase; 
 }
-#tablaAutos h3:first-letter  {
+#tablaAutos h2:first-letter, #tablaAutos h3:first-letter  {
   text-transform: uppercase;
 }
 #tablaAutos h3{
