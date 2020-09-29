@@ -46,6 +46,8 @@ var cotizacionesRealizadas = localStorage.datosJSON;
 
 $(function () {
 
+    
+    $("#tablaAutos").hide()
 
     $(".botonVerAutos__texto").hide();
     $(".botonVerAutos__link").mouseenter(() => {
@@ -54,18 +56,6 @@ $(function () {
     $(".botonVerAutos__link").mouseleave(() => {
         $(".botonVerAutos__texto").hide();
     });
-    $(".botonVerAutos__link").click(() => {
-
-        $('#tablaAutos').append(
-            `<div class="tablaAutos__container">
-                <h2>${cotizacionesRealizadas.modelo}</h2>
-                <h3>Marca: ${cotizacionesRealizadas.marca}</br>Año:  ${cotizacionesRealizadas.anio}</br>Precio:  ${cotizacionesRealizadas.precio} <br></h3>
-            </div>`)
-
-        $([document.documentElement, document.body]).animate({
-            scrollTop: $("#tablaAutos").offset().top
-        }, 400);
-	});
     var horz = document.querySelector("#tablaAutos");
     isHover = false;
 
@@ -105,7 +95,6 @@ $(function () {
 
 	$(".changeButton").one( "click", function() {
         var $this = $(".changeButton");
-        $(".botonVerAutos").fadeIn();
         $this.toggleClass("changeButton");
         
         if ($this.hasClass("changeButton")) {
@@ -145,10 +134,10 @@ $(function () {
 
 function cotizarSeguro(e) {
     e.preventDefault();
-    const marca = $("#marca").val();
-    const modelo = $("#modelo").val();
-    const anio = $("#anio").val();
-	const tipo = $("input[name=tipo]:checked").val();
+    var marca = $("#marca").val();
+    var modelo = $("#modelo").val();
+    var anio = $("#anio").val();
+	var tipo = $("input[name=tipo]:checked").val();
 
     if (marca == "" || modelo == "" || anio == "") {
         mostrarMensaje("Todos los campos son obligatorios", "error");
@@ -161,20 +150,47 @@ function cotizarSeguro(e) {
         resultados.show().remove();
     }
 
-    const filtroPrecio = autos.find((elem) => elem.marcas.toLowerCase().replace(" ", "-") == marca && elem.modelo.toLowerCase().replace(" ", "-") == modelo);
+    var filtroPrecio = autos.find((elem) => elem.marcas.toLowerCase().replace(" ", "-") == marca && elem.modelo.toLowerCase().replace(" ", "-") == modelo);
 
-    const seguro = new Seguro(marca, modelo, anio, tipo, filtroPrecio.precio);
+    var seguro = new Seguro(marca, modelo, anio, tipo, filtroPrecio.precio);
 
-    const polizaTotal = seguro.cotizarSeguro();
+    var polizaTotal = seguro.cotizarSeguro();
 
     mostrarResultado(polizaTotal, seguro);
+    
+    localStorage.setItem("Marca", marca);
+    localStorage.setItem("Modelo", modelo);
+    localStorage.setItem("Año", anio);
+    localStorage.setItem("Tipo", tipo);
+    localStorage.setItem("Precio", filtroPrecio.precio);
+    localStorage.setItem("Poliza Total", polizaTotal);
 
-    var datosJSON = [];
-    var datosJSON = {"Marca": marca, "Modelo": modelo, "Anio": anio, "Tipo": tipo, "Precio": filtroPrecio.precio, "Poliza Total": polizaTotal}
-    localStorage.setItem('datosJSON', JSON.stringify(datosJSON));
+    $(".botonVerAutos").fadeIn();
 
+    $(".botonVerAutos__link").click(() => {
+        $("#tablaAutos").fadeTo(100, 1);
+        const marcaCotizada = localStorage.getItem("Marca");
+        const modeloCotizada = localStorage.getItem("Modelo");
+        const anioCotizada = localStorage.getItem("Año");
+        const tipoCotizada = localStorage.getItem("Tipo");
+        const precioCotizada = localStorage.getItem("Precio");
+        const polizaTotalCotizada = localStorage.getItem("Poliza Total");
+        
+
+        $('#tablaAutos').append(
+            `<div class="tablaAutos__container">
+                <h2>${modeloCotizada}</h2>
+                <h3>Marca: ${marcaCotizada}</h3><h3>Año:  ${anioCotizada}</h3>
+                <h3>Tipo:  ${tipoCotizada}</h3>
+                <h3>Precio:  ${precioCotizada}</h3>
+                <h3>Poliza Total:  ${polizaTotalCotizada} por mes</h3>
+            </div>`)
+
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#tablaAutos").offset().top
+        }, 400);
+	});
 }
-
 
 
 function mostrarResultado(poliza, seguro) {
