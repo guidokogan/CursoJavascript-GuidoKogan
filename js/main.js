@@ -192,12 +192,6 @@ function cotizarSeguro(e) {
 
         setTimeout(() => {
             $('#tablaAutos__container').fadeOut();
-            localStorage.clear("Marca");
-            localStorage.clear("Modelo");
-            localStorage.clear("Año");
-            localStorage.clear("Tipo");
-            localStorage.clear("Precio");
-            localStorage.clear("Poliza Total");
         }, 4000);
         
 	});
