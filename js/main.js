@@ -40,6 +40,10 @@ class Seguro {
         return poliza;
     }
 }
+
+
+var cotizacionesRealizadas = JSON.parse(localStorage.datosJSON);
+
 $(function () {
 
 
@@ -50,38 +54,20 @@ $(function () {
     $(".botonVerAutos__link").mouseleave(() => {
         $(".botonVerAutos__texto").hide();
     });
-    $(".botonVerAutos__link").one( "click", function() {
-        
+    $(".botonVerAutos__link").click(() => {
+
+        $('#tablaAutos').append(
+            `<div class="tablaAutos__container">
+                <h2>${cotizacionesRealizadas.modelo}</h2>
+                <h3>Marca: ${cotizacionesRealizadas.marca}</br>Año:  ${cotizacionesRealizadas.anio}</br>Precio:  ${cotizacionesRealizadas.precio} <br></h3>
+            </div>`)
+
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#tablaAutos").offset().top
         }, 400);
-        $.ajax({
-            url: 'js/db.json',
-            dataType: 'json',
-            success: function (data, status, jqXHR) {
-                data.forEach(element => {
-                    $('#tablaAutos').append(
-                        `<div class="tablaAutos__container">
-                            <h2>${element.modelo}</h1>
-                            <h3>Marca: ${element.marcas}</br>Año:  ${element.anio}</br>Precio:  ${element.precio} <br>
-                        </div>`)
-                })        
-            },
-            error: function (jqXHR, status, error){
-                console.log('Status: ${status} - Error: ${error}')
-            }
-        });
 	});
     var horz = document.querySelector("#tablaAutos");
     isHover = false;
-
-    function preventDefault (event) {
-        event = event || window.event;
-        if (event.preventDefault) {
-            event.preventDefault();
-        }
-        event.returnValue = false;
-    }
 
     horz.onmouseover=function(){
     isHover=true;
@@ -119,7 +105,9 @@ $(function () {
 
 	$(".changeButton").one( "click", function() {
         var $this = $(".changeButton");
+        $(".botonVerAutos").fadeIn();
         $this.toggleClass("changeButton");
+        
         if ($this.hasClass("changeButton")) {
             $this.text("Cotizá!");
         } else {
@@ -128,6 +116,7 @@ $(function () {
 	});
 	
 	$(".formInfo__input:nth-child(3)").hide();
+    $(".botonVerAutos").hide();
 	
 	$("#marca").change(function(){
 		$(".formInfo__input:nth-child(3)").fadeTo(500, 1);
@@ -156,7 +145,6 @@ $(function () {
 
 function cotizarSeguro(e) {
     e.preventDefault();
-    
     const marca = $("#marca").val();
     const modelo = $("#modelo").val();
     const anio = $("#anio").val();
@@ -179,11 +167,15 @@ function cotizarSeguro(e) {
 
     const polizaTotal = seguro.cotizarSeguro();
 
-	mostrarResultado(polizaTotal, seguro);
-	
-	const datosJSON = {"Marca": marca, "Modelo": modelo, "Anio": anio, "Tipo": tipo, "Precio": filtroPrecio.precio, "Poliza Total": polizaTotal}
-	localStorage.setItem('datos', JSON.stringify(datosJSON));
+    mostrarResultado(polizaTotal, seguro);
+
+    var datosJSON = [];
+    var datosJSON = {"Marca": marca, "Modelo": modelo, "Anio": anio, "Tipo": tipo, "Precio": filtroPrecio.precio, "Poliza Total": polizaTotal}
+    localStorage.setItem('datosJSON', JSON.stringify(datosJSON));
+
 }
+
+
 
 function mostrarResultado(poliza, seguro) {
     let { marca, modelo, anio, tipo, precio } = seguro;
