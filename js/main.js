@@ -42,7 +42,7 @@ class Seguro {
 }
 
 
-var cotizacionesRealizadas = JSON.parse(localStorage.datosJSON);
+var cotizacionesRealizadas = localStorage.datosJSON;
 
 $(function () {
 
