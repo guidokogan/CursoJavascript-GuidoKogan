@@ -513,7 +513,6 @@ h3 {
   margin: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   overflow:hidden;
 }
 .tablaAutos__container{
